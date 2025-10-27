@@ -1,0 +1,83 @@
+[gd_scene load_steps=12 format=3 uid="uid://dbc3iuoewh30f"]
+
+[ext_resource type="Texture2D" uid="uid://dmlmwoi1xeewo" path="res://Asset/Animations/Player_Idle.png" id="1_s7hed"]
+[ext_resource type="Texture2D" uid="uid://c58ntia6tiv7c" path="res://Asset/Animations/Shadow.png" id="2_rj7j4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b8828"]
+radius = 4.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vvvbf"]
+atlas = ExtResource("1_s7hed")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y4sok"]
+atlas = ExtResource("1_s7hed")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ujyx"]
+atlas = ExtResource("1_s7hed")
+region = Rect2(192, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d5853"]
+atlas = ExtResource("1_s7hed")
+region = Rect2(288, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lredk"]
+atlas = ExtResource("1_s7hed")
+region = Rect2(384, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nov04"]
+atlas = ExtResource("1_s7hed")
+region = Rect2(480, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_357xm"]
+atlas = ExtResource("1_s7hed")
+region = Rect2(576, 0, 96, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7gp2l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vvvbf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y4sok")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ujyx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d5853")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lredk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nov04")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_357xm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[node name="Player" type="CharacterBody2D"]
+y_sort_enabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_b8828")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_7gp2l")
+autoplay = "default"
+frame = 3
+frame_progress = 0.5514823
+offset = Vector2(0, -20)
+
+[node name="Shadow" type="Sprite2D" parent="."]
+position = Vector2(0, -1)
+texture = ExtResource("2_rj7j4")
+offset = Vector2(0, 1)
