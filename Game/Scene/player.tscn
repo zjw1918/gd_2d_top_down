@@ -1,5 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://dbc3iuoewh30f"]
+[gd_scene load_steps=13 format=3 uid="uid://dbc3iuoewh30f"]
 
+[ext_resource type="Script" uid="uid://b4onh7ch1fago" path="res://Game/Script/player.gd" id="1_rj7j4"]
 [ext_resource type="Texture2D" uid="uid://dmlmwoi1xeewo" path="res://Asset/Animations/Player_Idle.png" id="1_s7hed"]
 [ext_resource type="Texture2D" uid="uid://c58ntia6tiv7c" path="res://Asset/Animations/Shadow.png" id="2_rj7j4"]
 
@@ -65,6 +66,7 @@ animations = [{
 
 [node name="Player" type="CharacterBody2D"]
 y_sort_enabled = true
+script = ExtResource("1_rj7j4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
