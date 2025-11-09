@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=4 uid="uid://bjtsl6qmvf6a4"]
+[gd_scene load_steps=8 format=4 uid="uid://bjtsl6qmvf6a4"]
 
 [ext_resource type="Texture2D" uid="uid://1c8pq1e5xjs0" path="res://Asset/Level/Background_Grass.png" id="1_wd0a0"]
 [ext_resource type="PackedScene" uid="uid://dbc3iuoewh30f" path="res://Game/Scene/player.tscn" id="2_lv82p"]
+[ext_resource type="Texture2D" uid="uid://bl6osmruvh6xh" path="res://Asset/Level/Tilemap_Platform.png" id="2_w1egk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lv82p"]
 texture = ExtResource("1_wd0a0")
@@ -12,11 +13,103 @@ texture_region_size = Vector2i(256, 256)
 tile_size = Vector2i(256, 256)
 sources/0 = SubResource("TileSetAtlasSource_lv82p")
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rchnd"]
+texture = ExtResource("2_w1egk")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+8:0/0 = 0
+9:0/0 = 0
+10:0/0 = 0
+11:0/0 = 0
+12:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+8:1/0 = 0
+9:1/0 = 0
+11:1/0 = 0
+12:1/0 = 0
+13:1/0 = 0
+0:2/size_in_atlas = Vector2i(1, 2)
+0:2/0 = 0
+0:2/0/texture_origin = Vector2i(0, -16)
+1:2/size_in_atlas = Vector2i(1, 2)
+1:2/0 = 0
+1:2/0/texture_origin = Vector2i(0, -16)
+3:2/size_in_atlas = Vector2i(1, 2)
+3:2/0 = 0
+3:2/0/texture_origin = Vector2i(0, -16)
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+8:2/0 = 0
+10:2/0 = 0
+11:2/0 = 0
+12:2/0 = 0
+13:2/0 = 0
+4:3/0 = 0
+5:3/size_in_atlas = Vector2i(1, 2)
+5:3/0 = 0
+5:3/0/texture_origin = Vector2i(0, -16)
+6:3/size_in_atlas = Vector2i(1, 2)
+6:3/0 = 0
+6:3/0/texture_origin = Vector2i(0, -16)
+7:3/0 = 0
+8:3/size_in_atlas = Vector2i(1, 2)
+8:3/0 = 0
+8:3/0/texture_origin = Vector2i(0, -16)
+9:3/size_in_atlas = Vector2i(1, 2)
+9:3/0 = 0
+9:3/0/texture_origin = Vector2i(0, -16)
+10:3/0 = 0
+11:3/size_in_atlas = Vector2i(1, 2)
+11:3/0 = 0
+11:3/0/texture_origin = Vector2i(0, -16)
+12:3/size_in_atlas = Vector2i(2, 2)
+12:3/0 = 0
+12:3/0/texture_origin = Vector2i(-16, -16)
+0:4/size_in_atlas = Vector2i(1, 2)
+0:4/0 = 0
+0:4/0/texture_origin = Vector2i(0, -16)
+1:4/size_in_atlas = Vector2i(1, 2)
+1:4/0 = 0
+1:4/0/texture_origin = Vector2i(0, -16)
+2:4/size_in_atlas = Vector2i(1, 2)
+2:4/0 = 0
+2:4/0/texture_origin = Vector2i(0, -16)
+3:4/size_in_atlas = Vector2i(1, 2)
+3:4/0 = 0
+3:4/0/texture_origin = Vector2i(0, -16)
+2:2/size_in_atlas = Vector2i(1, 2)
+2:2/0 = 0
+2:2/0/texture_origin = Vector2i(0, -16)
+
+[sub_resource type="TileSet" id="TileSet_rl4yr"]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_rchnd")
+
 [node name="Node2D" type="Node2D"]
 
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
+[node name="TileMapLayerBackgroung" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAABAAAAAAAAAAAAAAABAAEAAAAAAAAAAAABAAIAAAAAAAAAAAABAAMAAAAAAAAAAAACAAAAAAAAAAAAAAACAAEAAAAAAAAAAAACAAIAAAAAAAAAAAACAAMAAAAAAAAAAAADAAAAAAAAAAAAAAADAAEAAAAAAAAAAAADAAIAAAAAAAAAAAADAAMAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_w1egk")
+
+[node name="TileMapLayer2" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAALABgAAAACAAQAAAAMABgAAAACAAQAAAANABgAAAACAAQAAAAOABgAAAACAAQAAAAPABgAAAACAAQAAAAQABgAAAACAAQAAAARABgAAAACAAQAAAAKABgAAAABAAQAAAASABgAAAADAAQAAAAWABgAAAAIAAMAAAAWABQAAAAIAAAAAAAaABQAAAALAAAAAAAaABgAAAALAAMAAAAXABgAAAAJAAMAAAAYABgAAAAJAAMAAAAZABgAAAAJAAMAAAAXABQAAAAKAAAAAAAYABQAAAAKAAAAAAAZABQAAAAKAAAAAAAWABUAAAAIAAEAAAAWABYAAAAIAAEAAAAWABcAAAAIAAEAAAAaABUAAAALAAIAAAAaABYAAAALAAIAAAAaABcAAAALAAIAAAAXABUAAAANAAEAAAAYABUAAAANAAEAAAAZABUAAAANAAEAAAAZABYAAAANAAEAAAAZABcAAAANAAEAAAAYABcAAAANAAEAAAAXABcAAAANAAEAAAAXABYAAAANAAEAAAAYABYAAAANAAEAAAAKABwAAAABAAQAAAALABwAAAACAAQAAAAMABwAAAACAAQAAAANABwAAAACAAQAAAAQABwAAAADAAQAAAAOABwAAAACAAQAAAAPABwAAAACAAQAAAA=")
+tile_set = SubResource("TileSet_rl4yr")
 
 [node name="Player" parent="." instance=ExtResource("2_lv82p")]
 position = Vector2(500, 700)
