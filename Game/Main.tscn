@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=4 uid="uid://bjtsl6qmvf6a4"]
+[gd_scene load_steps=12 format=4 uid="uid://bjtsl6qmvf6a4"]
 
 [ext_resource type="Texture2D" uid="uid://1c8pq1e5xjs0" path="res://Asset/Level/Background_Grass.png" id="1_wd0a0"]
 [ext_resource type="PackedScene" uid="uid://dbc3iuoewh30f" path="res://Game/Scene/player.tscn" id="2_lv82p"]
 [ext_resource type="Texture2D" uid="uid://bl6osmruvh6xh" path="res://Asset/Level/Tilemap_Platform.png" id="2_w1egk"]
-[ext_resource type="PackedScene" uid="uid://dk4sv1u1a4fja" path="res://Game/Scene/grass.tscn" id="4_rchnd"]
+[ext_resource type="Texture2D" uid="uid://bbapblvsiwpq3" path="res://Asset/Level/TreeAndGrass.png" id="4_rchnd"]
+[ext_resource type="Script" uid="uid://ckl28gmdawt47" path="res://Game/Script/tile_map_layer_grass_generator.gd" id="5_rl4yr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lv82p"]
 texture = ExtResource("1_wd0a0")
@@ -509,6 +510,15 @@ terrain_set_0/terrain_0/name = "Platform"
 terrain_set_0/terrain_0/color = Color(0.69684196, 0.007976228, 0.3975908, 1)
 sources/0 = SubResource("TileSetAtlasSource_rchnd")
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rl4yr"]
+texture = ExtResource("4_rchnd")
+texture_region_size = Vector2i(32, 32)
+2:3/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_g5pn2"]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_rl4yr")
+
 [node name="Node2D" type="Node2D"]
 
 [node name="TileMapLayerBackgroung" type="TileMapLayer" parent="."]
@@ -522,8 +532,10 @@ tile_set = SubResource("TileSet_rl4yr")
 [node name="Node2D" type="Node2D" parent="."]
 y_sort_enabled = true
 
-[node name="Grass" parent="Node2D" instance=ExtResource("4_rchnd")]
-position = Vector2(533, 788)
-
 [node name="Player" parent="Node2D" instance=ExtResource("2_lv82p")]
 position = Vector2(531, 753)
+
+[node name="TileMapLayerGrass" type="TileMapLayer" parent="Node2D"]
+tile_map_data = PackedByteArray("AAALABYAAAACAAMAAAAMABYAAAACAAMAAAANABYAAAACAAMAAAAOABYAAAACAAMAAAAOABcAAAACAAMAAAANABcAAAACAAMAAAAMABcAAAACAAMAAAALABcAAAACAAMAAAALABgAAAACAAMAAAAMABgAAAACAAMAAAANABgAAAACAAMAAAANABkAAAACAAMAAAAMABkAAAACAAMAAAALABkAAAACAAMAAAALABoAAAACAAMAAAAMABoAAAACAAMAAAANABoAAAACAAMAAAAOABoAAAACAAMAAAAPABoAAAACAAMAAAAQABoAAAACAAMAAAARABoAAAACAAMAAAARABkAAAACAAMAAAASABkAAAACAAMAAAATABkAAAACAAMAAAATABoAAAACAAMAAAASABoAAAACAAMAAAAUABoAAAACAAMAAAAVABoAAAACAAMAAAAWABoAAAACAAMAAAAWABcAAAACAAMAAAAWABYAAAACAAMAAAAVABYAAAACAAMAAAAUABYAAAACAAMAAAATABYAAAACAAMAAAATABcAAAACAAMAAAASABcAAAACAAMAAAASABgAAAACAAMAAAATABgAAAACAAMAAAAUABgAAAACAAMAAAAVABkAAAACAAMAAAAUABkAAAACAAMAAAAUABcAAAACAAMAAAAVABcAAAACAAMAAAAOABgAAAACAAMAAAAOABkAAAACAAMAAAAXABcAAAACAAMAAAAXABgAAAACAAMAAAAYABgAAAACAAMAAAAYABkAAAACAAMAAAAZABkAAAACAAMAAAAZABoAAAACAAMAAAAaABoAAAACAAMAAAA=")
+tile_set = SubResource("TileSet_g5pn2")
+script = ExtResource("5_rl4yr")
