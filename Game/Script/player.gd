@@ -1,43 +1,26 @@
 extends CharacterBody2D
 
-const SPEED = 200
-const ACCELERATE = 15
-
+# References
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var hsm: LimboHSM = $LimboHSM
+@onready var idle_state: LimboState = $LimboHSM/IdleState
+@onready var move_state: LimboState = $LimboHSM/MoveState
+
+# Debug label (optional - for visual debugging)
+@onready var debug_label: Label = $DebugLabel if has_node("DebugLabel") else null
+
+# State data - accessed by states
+var facing_direction: String = "down"
 
 
-var m_input_direction: Vector2 = Vector2.ZERO
-var m_facing_direction: String = "down"
-
-func _physics_process(delta: float) -> void:
-	m_input_direction = Input.get_vector("left","right", "up","down")
+func _ready() -> void:
+	# Set up state transitions
+	hsm.add_transition(idle_state, move_state, "move")
+	hsm.add_transition(move_state, idle_state, "idle")
 	
-	velocity = velocity.lerp(m_input_direction * SPEED, ACCELERATE * delta)
-	move_and_slide()
+	# Set initial state
+	hsm.initial_state = idle_state
 	
-	var animation_to_play: String
-	
-	if velocity.length() > 50:
-		animation_to_play = "run_" + get_direction_name()
-	else:
-		animation_to_play = "idle_" + get_direction_name()
-	
-	animated_sprite_2d.play(animation_to_play)
-	#print(animation_to_play)
-		
-
-func get_direction_name() -> String:
-	if m_input_direction == Vector2.ZERO:
-		return m_facing_direction
-		
-	if m_input_direction.y > 0:
-		m_facing_direction = "down"
-	elif m_input_direction.y < 0:
-		m_facing_direction = "up"
-	else:
-		if m_input_direction.x > 0:
-			m_facing_direction = "right"
-		elif m_input_direction.x < 0:
-			m_facing_direction = "left"
-	
-	return m_facing_direction
+	# Initialize and activate the state machine
+	hsm.initialize(self)
+	hsm.set_active(true)

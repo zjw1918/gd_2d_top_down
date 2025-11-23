@@ -1,9 +1,11 @@
-[gd_scene load_steps=67 format=3 uid="uid://dbc3iuoewh30f"]
+[gd_scene load_steps=69 format=3 uid="uid://dbc3iuoewh30f"]
 
 [ext_resource type="Script" uid="uid://b4onh7ch1fago" path="res://Game/Script/player.gd" id="1_rj7j4"]
 [ext_resource type="Texture2D" uid="uid://dmlmwoi1xeewo" path="res://Asset/Animations/Player_Idle.png" id="1_s7hed"]
 [ext_resource type="Texture2D" uid="uid://c58ntia6tiv7c" path="res://Asset/Animations/Shadow.png" id="2_rj7j4"]
 [ext_resource type="Texture2D" uid="uid://b01aetob5g2kw" path="res://Asset/Animations/Player_Run.png" id="3_b8828"]
+[ext_resource type="Script" uid="uid://ceksq7utn8ric" path="res://Game/Script/States/idle_state.gd" id="5_y4sok"]
+[ext_resource type="Script" uid="uid://p8lvjq3uhkwo" path="res://Game/Script/States/move_state.gd" id="6_4ujyx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b8828"]
 radius = 4.0
@@ -493,3 +495,20 @@ offset = Vector2(0, 1)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2.99, 2.99)
+
+[node name="LimboHSM" type="LimboHSM" parent="."]
+
+[node name="IdleState" type="LimboState" parent="LimboHSM"]
+script = ExtResource("5_y4sok")
+
+[node name="MoveState" type="LimboState" parent="LimboHSM"]
+script = ExtResource("6_4ujyx")
+
+[node name="DebugLabel" type="Label" parent="."]
+z_index = 100
+offset_left = 13.0
+offset_top = 1.0
+offset_right = 53.0
+offset_bottom = 24.0
+theme_override_font_sizes/font_size = 10
+text = "state"
